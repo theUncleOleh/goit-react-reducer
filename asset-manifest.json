@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/goit-react-reducer/static/css/main.7acaea2f.css",
+    "main.js": "/goit-react-reducer/static/js/main.bc46ddd9.js",
+    "index.html": "/goit-react-reducer/index.html",
+    "main.7acaea2f.css.map": "/goit-react-reducer/static/css/main.7acaea2f.css.map",
+    "main.bc46ddd9.js.map": "/goit-react-reducer/static/js/main.bc46ddd9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.bc46ddd9.js"
+  ]
+}
