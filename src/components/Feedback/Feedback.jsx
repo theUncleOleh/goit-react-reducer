@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer } from 'react';
 
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
