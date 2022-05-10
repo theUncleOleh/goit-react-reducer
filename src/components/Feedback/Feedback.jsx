@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
@@ -17,12 +17,23 @@ function countFeedback(state, action) {
       throw new Error('aaaaaaaaaaaaaaaaaaaaaaaaa');
   }
 }
+// function init(state) {
+//   const localStorage = JSON.parse(window.localStorage.getItem(state));
+//   return {
+//     ...state,
+//     ...localStorage,
+//   };
+// }
 export default function Feedback() {
-  const [state, dispatch] = useReducer(countFeedback, {
-    good: 0,
-    bad: 0,
-    neutral: 0,
-  });
+  const [state, dispatch] = useReducer(
+    countFeedback,
+    {
+      good: 0,
+      bad: 0,
+      neutral: 0,
+    }
+    // init
+  );
   // return (
   //   <div className={s.container}>
   //     <p>{state.good}</p>
@@ -68,7 +79,15 @@ export default function Feedback() {
   //       return;
   //   }
   // };
-  const keys = Object.keys(state);
+
+  // useEffect(() => {
+  //   window.localStorage.setItem('state', JSON.stringify(state));
+  // }, [state]);
+
+  // useEffect(() => {
+  //   const localStorage = JSON.parse(window.localStorage.getItem(state));
+  // });
+
   const handleClick = option => {
     dispatch({ type: option, payload: 1 });
   };
@@ -79,7 +98,7 @@ export default function Feedback() {
     return Math.round((state.good * 100) / (state.good + state.neutral));
   };
   const total = countTotalFeedback();
-
+  const keys = Object.keys(state);
   return (
     <div>
       <Section title="Please leave feedback">
