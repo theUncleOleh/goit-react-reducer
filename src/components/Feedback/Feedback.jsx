@@ -1,6 +1,5 @@
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 
-import s from './Feedback.module.css';
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
 import Section from '../Section/Section';
@@ -79,6 +78,7 @@ export default function Feedback() {
   const countPositiveFeedbackPercentage = () => {
     return Math.round((state.good * 100) / (state.good + state.neutral));
   };
+  const total = countTotalFeedback();
 
   return (
     <div>
@@ -86,14 +86,17 @@ export default function Feedback() {
         <FeedbackOptions options={keys} onLeaveFeedback={handleClick} />
       </Section>
       <Section title="Statistics">
-        <Statistics
-          good={state.good}
-          neutral={state.neutral}
-          bad={state.bad}
-          total={countTotalFeedback()}
-          positivePercentage={countPositiveFeedbackPercentage()}
-        ></Statistics>
-        <Notification message="there is no feedback"></Notification>
+        {total > 0 ? (
+          <Statistics
+            good={state.good}
+            neutral={state.neutral}
+            bad={state.bad}
+            total={countTotalFeedback()}
+            positivePercentage={countPositiveFeedbackPercentage()}
+          ></Statistics>
+        ) : (
+          <Notification message="there is no feedback"></Notification>
+        )}
       </Section>
     </div>
   );
